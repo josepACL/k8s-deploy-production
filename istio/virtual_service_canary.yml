@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: sockshop
+  namespace: production
 spec:
   hosts:
   - "*"
@@ -14,6 +15,7 @@ spec:
     route:
     - destination:
         host: carts.production.svc.cluster.local
+        subset: v1
   - route:
     - destination:
         host: front-end.production.svc.cluster.local
